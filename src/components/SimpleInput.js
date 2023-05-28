@@ -32,9 +32,11 @@ const SimpleInput = (props) => {
     return setName("");
   };
 
+  const nameInputClass = err ? "form-control invalid" : "form-control";
+
   return (
     <form onSubmit={formSubmit}>
-      <div className="form-control">
+      <div className={nameInputClass}>
         <input
           ref={nameRef}
           type="text"
@@ -47,7 +49,7 @@ const SimpleInput = (props) => {
       <div className="form-actions">
         <button>Submit</button>
       </div>
-      {err && <p style={{ color: "red" }}>Please fill up the name...</p>}
+      {err && <p className="error-text">Please fill up the name...</p>}
     </form>
   );
 };
