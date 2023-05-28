@@ -7,6 +7,7 @@ const SimpleInput = (props) => {
   // Accessing data using useState in form
   // variable to store entered name and state update
   const [name, setName] = useState("");
+  const [err, setErr] = useState(false);
 
   // name input watcher function
   const getName = (event) => {
@@ -16,12 +17,18 @@ const SimpleInput = (props) => {
   // Form submission handler
   const formSubmit = (event) => {
     event.preventDefault();
+
+    if (name.trim() === "") {
+      return setErr(true);
+    }
+
     const nameValue = nameRef.current.value;
     console.log("Get name using useRef method: ", nameValue);
     console.log("Get name using useState method: ", name);
 
     // Resetting name value
     nameRef.current.value = "";
+    setErr(false);
     return setName("");
   };
 
@@ -40,6 +47,7 @@ const SimpleInput = (props) => {
       <div className="form-actions">
         <button>Submit</button>
       </div>
+      {err && <p style={{ color: "red" }}>Please fill up the name...</p>}
     </form>
   );
 };
