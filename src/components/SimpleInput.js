@@ -11,7 +11,13 @@ const SimpleInput = (props) => {
 
   // name input watcher function
   const getName = (event) => {
-    return setName(event.target.value);
+    if (event.target.value.trim() === "") {
+      setErr(true);
+    }
+
+    setName(event.target.value);
+
+    setErr(false);
   };
 
   // Input blur handler
