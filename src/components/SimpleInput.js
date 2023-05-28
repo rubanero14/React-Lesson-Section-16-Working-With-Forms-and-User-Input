@@ -14,6 +14,15 @@ const SimpleInput = (props) => {
     return setName(event.target.value);
   };
 
+  // Input blur handler
+  const onInputBlur = (event) => {
+    if (name.trim() === "") {
+      return setErr(true);
+    }
+
+    setErr(false);
+  };
+
   // Form submission handler
   const formSubmit = (event) => {
     event.preventDefault();
@@ -43,6 +52,7 @@ const SimpleInput = (props) => {
           id="name"
           placeholder="Insert your name here.."
           onChange={getName}
+          onBlur={onInputBlur}
           value={name}
         />
       </div>
