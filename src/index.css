@@ -80,6 +80,15 @@ button:active {
   transform: scale(0.95);
 }
 
+button:disabled,
+button:disabled:hover,
+button:disabled:active {
+  background-color: #ccc;
+  color: #292929;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
 .form-actions {
   text-align: right;
 }
